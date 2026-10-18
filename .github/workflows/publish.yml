@@ -1,0 +1,23 @@
+name: Publish to PyPI
+
+# 默认不发布。要发的时候把仓库变量 PUBLISH_TO_PYPI 设成 true，
+# 并在 PyPI 上配置本仓库的 Trusted Publisher（workflow: publish.yml, environment: pypi）。
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    if: vars.PUBLISH_TO_PYPI == 'true'
+    runs-on: ubuntu-latest
+    environment: pypi
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv build
+      - uses: pypa/gh-action-pypi-publish@release/v1

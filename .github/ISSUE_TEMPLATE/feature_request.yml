@@ -1,0 +1,43 @@
+name: 提需求
+description: 新通道、字段、行为
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        先说场景。本包的定位是「一条消息发多处」，不做 CLI、不做常驻服务、不做入站。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - 新通道
+        - 现有通道的能力
+        - Message 字段
+        - 分发与错误处理
+        - 文档
+    validations:
+      required: true
+  - type: textarea
+    id: scene
+    attributes:
+      label: 你的场景
+      placeholder: 我有一套行情告警，想同时发到飞书群和 Telegram
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望怎么用
+      render: python
+  - type: input
+    id: sdk
+    attributes:
+      label: 如果是新通道，平台有官方 SDK 吗
+      placeholder: 有，包名 xxx；或：没有官方 SDK
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: 是否愿意自己提 PR
+      options:
+        - label: 愿意，按 CONTRIBUTING.md 的「新增一个通道」来写
