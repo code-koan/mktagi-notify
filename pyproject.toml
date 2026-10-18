@@ -36,7 +36,12 @@ Issues = "https://github.com/code-koan/notify-kit/issues"
 Changelog = "https://github.com/code-koan/notify-kit/blob/main/CHANGELOG.md"
 
 [dependency-groups]
-dev = ["pytest>=9", "pytest-asyncio>=1.2", "ruff>=0.14", "pyright>=1.1"]
+dev = [
+    "pytest>=9",
+    "pytest-asyncio>=1.2",
+    "ruff>=0.14",
+    "pyright>=1.1",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/notifykit"]

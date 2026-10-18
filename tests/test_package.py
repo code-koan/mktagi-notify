@@ -1,15 +1,18 @@
+import re
 from pathlib import Path
 
-import tomllib
-
 import notifykit
+
+VERSION_LINE = re.compile(r'^version = "([^"]+)"', re.MULTILINE)
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_version_matches_pyproject():
-    metadata = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
-    version = metadata["project"]["version"]
+    text = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    match = VERSION_LINE.search(text)
+    assert match is not None, "pyproject.toml 里没有 version 行"
+    version = match.group(1)
     assert notifykit.__version__ == version
     parts = version.split(".")
     assert len(parts) == 3, f"版本号必须是 X.Y.Z：{version}"
