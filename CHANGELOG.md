@@ -3,7 +3,7 @@
 格式沿用 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
 版本号是 `X.Y.Z` 语义化版本：不兼容的改动升 X，新能力升 Y，修 bug 升 Z。
 
-## [0.1.0] - 2026-10-18
+## [0.0.1] - 2026-10-18
 
 ### 新增
 

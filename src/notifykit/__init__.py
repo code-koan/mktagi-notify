@@ -10,7 +10,7 @@ from notifykit.errors import ConfigError, NotifyError
 from notifykit.message import Message, Severity
 from notifykit.result import DeliveryResult
 
-__version__ = "0.1.0"
+__version__ = "0.0.1"
 
 __all__ = [
     "Channel",

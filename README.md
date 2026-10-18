@@ -66,3 +66,5 @@ uv run pyright
 ## 许可证
 
 MIT，见 [LICENSE](LICENSE)。
+
+当前是 `0.0.x`，接口随时可能改；到 `1.0.0` 才承诺兼容性。
