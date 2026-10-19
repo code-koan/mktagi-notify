@@ -11,12 +11,12 @@ import time
 try:
     from slack_sdk.webhook import WebhookClient
 except ImportError as exc:  # pragma: no cover
-    raise ImportError("Slack 需要官方 SDK：pip install 'notify-kit[slack]'") from exc
+    raise ImportError("Slack 需要官方 SDK：pip install 'mktagi-notify[slack]'") from exc
 
-from notifykit.errors import NotifyError
-from notifykit.message import Message
-from notifykit.render.slack_blocks import blocks, fallback_text
-from notifykit.result import DeliveryResult, elapsed_ms
+from mktagi_notify.errors import NotifyError
+from mktagi_notify.message import Message
+from mktagi_notify.render.slack_blocks import blocks, fallback_text
+from mktagi_notify.result import DeliveryResult, elapsed_ms
 
 
 class Slack:

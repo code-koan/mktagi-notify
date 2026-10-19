@@ -2,7 +2,7 @@
 
 ## 报告漏洞
 
-用 GitHub 的 [Private vulnerability reporting](https://github.com/code-koan/notify-kit/security/advisories/new) 提交，
+用 GitHub 的 [Private vulnerability reporting](https://github.com/code-koan/mktagi-notify/security/advisories/new) 提交，
 不要开公开 issue。
 
 请写清：受影响的版本、复现步骤、影响（比如能否让 webhook 把消息发到别处）、你已知的缓解办法。

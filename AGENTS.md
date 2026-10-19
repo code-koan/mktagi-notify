@@ -1,4 +1,4 @@
-# notify-kit
+# mktagi-notify
 
 一个消息发多处：飞书（自定义机器人 / 应用机器人）、Telegram、Slack、Discord。
 
@@ -9,10 +9,10 @@
 
 ## 目录
 
-- `src/notifykit/message.py`：唯一的数据模型，字段刻意少。
-- `src/notifykit/channel.py`：`Channel` 协议、`fanout`、`from_env`。
-- `src/notifykit/render/`：纯函数渲染器，不碰网络。
-- `src/notifykit/channels/`：五个适配器，各自一个文件，薄壳。
+- `src/mktagi_notify/message.py`：唯一的数据模型，字段刻意少。
+- `src/mktagi_notify/channel.py`：`Channel` 协议、`fanout`、`from_env`。
+- `src/mktagi_notify/render/`：纯函数渲染器，不碰网络。
+- `src/mktagi_notify/channels/`：五个适配器，各自一个文件，薄壳。
 - `docs/`：通道配置与 API 说明，改行为时同批更新。
 
 ## 约束

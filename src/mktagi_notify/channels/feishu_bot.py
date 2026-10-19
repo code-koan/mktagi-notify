@@ -15,12 +15,14 @@ try:
     import lark_oapi as lark
     from lark_oapi.api.im.v1 import CreateMessageRequest, CreateMessageRequestBody
 except ImportError as exc:  # pragma: no cover - 只有没装 extra 时才会走到
-    raise ImportError("飞书应用机器人需要官方 SDK：pip install 'notify-kit[feishu-bot]'") from exc
+    raise ImportError(
+        "飞书应用机器人需要官方 SDK：pip install 'mktagi-notify[feishu-bot]'"
+    ) from exc
 
-from notifykit.errors import NotifyError
-from notifykit.message import Message
-from notifykit.render.feishu_card import card
-from notifykit.result import DeliveryResult, elapsed_ms
+from mktagi_notify.errors import NotifyError
+from mktagi_notify.message import Message
+from mktagi_notify.render.feishu_card import card
+from mktagi_notify.result import DeliveryResult, elapsed_ms
 
 
 class FeishuBot:

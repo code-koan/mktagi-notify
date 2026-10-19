@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from notifykit.message import Message
-from notifykit.render.common import clip, to_slack_mrkdwn
+from mktagi_notify.message import Message
+from mktagi_notify.render.common import clip, to_slack_mrkdwn
 
 TITLE_LIMIT = 150
 SECTION_LIMIT = 2900

@@ -1,9 +1,9 @@
 import httpx
 import pytest
 
-from notifykit import Message, NotifyError
-from notifykit.channels.feishu_webhook import FeishuWebhook, sign
-from notifykit.render.feishu_card import card
+from mktagi_notify import Message, NotifyError
+from mktagi_notify.channels.feishu_webhook import FeishuWebhook, sign
+from mktagi_notify.render.feishu_card import card
 
 
 def _transport(handler):

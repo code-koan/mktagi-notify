@@ -13,10 +13,10 @@ import time
 
 import httpx
 
-from notifykit.errors import NotifyError
-from notifykit.message import Message
-from notifykit.render.feishu_card import card
-from notifykit.result import DeliveryResult, elapsed_ms
+from mktagi_notify.errors import NotifyError
+from mktagi_notify.message import Message
+from mktagi_notify.render.feishu_card import card
+from mktagi_notify.result import DeliveryResult, elapsed_ms
 
 
 def sign(secret: str, timestamp: int) -> str:

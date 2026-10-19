@@ -46,7 +46,7 @@ results: list[DeliveryResult] = await fanout(channels, message)
 ## 环境变量装配
 
 ```python
-channels = from_env(prefix="NOTIFYKIT_")
+channels = from_env(prefix="MKTAGI_NOTIFY_")
 ```
 
 | 变量 | 需要一起给的 | 构建出的通道 |
@@ -62,11 +62,11 @@ channels = from_env(prefix="NOTIFYKIT_")
 ## 渲染器
 
 ```python
-from notifykit.render import card, html, embed, blocks, fallback_text
+from mktagi_notify.render import card, html, embed, blocks, fallback_text
 ```
 
 纯函数，输入 `Message`，输出该平台的载荷（dict / list / str）。可以脱离网络单独测，也是对接新平台时的扩展点。
 
 ## 版本
 
-`notifykit.__version__` 与 `pyproject.toml` 的 `version` 必须一致（有测试守着），格式是 `X.Y.Z`。
+`mktagi_notify.__version__` 与 `pyproject.toml` 的 `version` 必须一致（有测试守着），格式是 `X.Y.Z`。

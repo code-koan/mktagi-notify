@@ -9,11 +9,11 @@ from typing import Any, cast
 try:
     from discord import SyncWebhook
 except ImportError as exc:  # pragma: no cover
-    raise ImportError("Discord 需要 discord.py：pip install 'notify-kit[discord]'") from exc
+    raise ImportError("Discord 需要 discord.py：pip install 'mktagi-notify[discord]'") from exc
 
-from notifykit.message import Message
-from notifykit.render.discord_embed import embed
-from notifykit.result import DeliveryResult, elapsed_ms
+from mktagi_notify.message import Message
+from mktagi_notify.render.discord_embed import embed
+from mktagi_notify.result import DeliveryResult, elapsed_ms
 
 
 class Discord:

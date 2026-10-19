@@ -2,21 +2,21 @@
 
 凭据从环境变量读，没配的通道自动跳过：
 
-    export NOTIFYKIT_FEISHU_WEBHOOK_URL=...
-    export NOTIFYKIT_TELEGRAM_BOT_TOKEN=...
-    export NOTIFYKIT_TELEGRAM_CHAT_ID=...
+    export MKTAGI_NOTIFY_FEISHU_WEBHOOK_URL=...
+    export MKTAGI_NOTIFY_TELEGRAM_BOT_TOKEN=...
+    export MKTAGI_NOTIFY_TELEGRAM_CHAT_ID=...
     python examples/fanout.py
 """
 
 import asyncio
 
-from notifykit import Message, Severity, channel_names, fanout, from_env
+from mktagi_notify import Message, Severity, channel_names, fanout, from_env
 
 
 async def main() -> None:
     channels = from_env()
     if not channels:
-        raise SystemExit("没有配置任何通道，先设置 NOTIFYKIT_* 环境变量")
+        raise SystemExit("没有配置任何通道，先设置 MKTAGI_NOTIFY_* 环境变量")
 
     results = await fanout(
         channels,

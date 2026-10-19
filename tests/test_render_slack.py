@@ -1,5 +1,5 @@
-from notifykit import Message
-from notifykit.render.slack_blocks import MAX_FIELDS, blocks, fallback_text
+from mktagi_notify import Message
+from mktagi_notify.render.slack_blocks import MAX_FIELDS, blocks, fallback_text
 
 
 def test_blocks_shape():

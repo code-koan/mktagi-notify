@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from notifykit.message import Message, Severity
-from notifykit.render.common import clip
+from mktagi_notify.message import Message, Severity
+from mktagi_notify.render.common import clip
 
 COLORS = {
     Severity.INFO: 0x3B82F6,

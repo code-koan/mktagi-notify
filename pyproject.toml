@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "notify-kit"
+name = "mktagi-notify"
 version = "0.0.1"
 description = "统一的消息通知包：飞书 webhook、飞书机器人、Telegram、Slack、Discord"
 readme = "README.md"
@@ -31,9 +31,9 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/code-koan/notify-kit"
-Issues = "https://github.com/code-koan/notify-kit/issues"
-Changelog = "https://github.com/code-koan/notify-kit/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/code-koan/mktagi-notify"
+Issues = "https://github.com/code-koan/mktagi-notify/issues"
+Changelog = "https://github.com/code-koan/mktagi-notify/blob/main/CHANGELOG.md"
 
 [dependency-groups]
 dev = [
@@ -44,7 +44,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/notifykit"]
+packages = ["src/mktagi_notify"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

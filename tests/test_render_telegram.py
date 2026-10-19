@@ -1,5 +1,5 @@
-from notifykit import Message
-from notifykit.render.telegram_html import LIMIT, html
+from mktagi_notify import Message
+from mktagi_notify.render.telegram_html import LIMIT, html
 
 
 def test_bold_becomes_b_tag():

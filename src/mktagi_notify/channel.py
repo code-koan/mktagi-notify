@@ -7,8 +7,8 @@ import os
 from collections.abc import Iterable, Sequence
 from typing import Protocol, runtime_checkable
 
-from notifykit.message import Message
-from notifykit.result import DeliveryResult
+from mktagi_notify.message import Message
+from mktagi_notify.result import DeliveryResult
 
 
 @runtime_checkable
@@ -36,7 +36,7 @@ async def _deliver(channel: Channel, message: Message) -> DeliveryResult:
         return DeliveryResult(channel=name, ok=False, error=str(exc) or type(exc).__name__)
 
 
-def from_env(prefix: str = "NOTIFYKIT_") -> list[Channel]:
+def from_env(prefix: str = "MKTAGI_NOTIFY_") -> list[Channel]:
     """按环境变量装配通道，凭据不全的通道直接跳过。
 
     变量名：``{prefix}FEISHU_WEBHOOK_URL``、``{prefix}FEISHU_WEBHOOK_SECRET``、
@@ -51,30 +51,30 @@ def from_env(prefix: str = "NOTIFYKIT_") -> list[Channel]:
     channels: list[Channel] = []
 
     if url := get("FEISHU_WEBHOOK_URL"):
-        from notifykit.channels import FeishuWebhook
+        from mktagi_notify.channels import FeishuWebhook
 
         channels.append(FeishuWebhook(url, get("FEISHU_WEBHOOK_SECRET")))
 
     feishu_app = (get("FEISHU_APP_ID"), get("FEISHU_APP_SECRET"), get("FEISHU_CHAT_ID"))
     if all(feishu_app):
-        from notifykit.channels import FeishuBot
+        from mktagi_notify.channels import FeishuBot
 
         app_id, app_secret, chat_id = feishu_app
         channels.append(FeishuBot(str(app_id), str(app_secret), str(chat_id)))
 
     if (token := get("TELEGRAM_BOT_TOKEN")) and (chat_id := get("TELEGRAM_CHAT_ID")):
-        from notifykit.channels import Telegram
+        from mktagi_notify.channels import Telegram
 
         thread_id = get("TELEGRAM_THREAD_ID")
         channels.append(Telegram(token, chat_id, thread_id=int(thread_id) if thread_id else None))
 
     if url := get("SLACK_WEBHOOK_URL"):
-        from notifykit.channels import Slack
+        from mktagi_notify.channels import Slack
 
         channels.append(Slack(url))
 
     if url := get("DISCORD_WEBHOOK_URL"):
-        from notifykit.channels import Discord
+        from mktagi_notify.channels import Discord
 
         channels.append(Discord(url))
 

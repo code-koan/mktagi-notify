@@ -34,8 +34,8 @@ docs: 补飞书应用机器人的权限说明
 
 只加两个文件，别动别处：
 
-1. `src/notifykit/render/<平台>.py`：把 `Message` 变成该平台的 payload，纯函数，返回 dict / list / str。
-2. `src/notifykit/channels/<平台>.py`：一个类，`name` 属性 + `async def send(message) -> DeliveryResult`，内部用官方 SDK，同步 SDK 用 `asyncio.to_thread`。
+1. `src/mktagi_notify/render/<平台>.py`：把 `Message` 变成该平台的 payload，纯函数，返回 dict / list / str。
+2. `src/mktagi_notify/channels/<平台>.py`：一个类，`name` 属性 + `async def send(message) -> DeliveryResult`，内部用官方 SDK，同步 SDK 用 `asyncio.to_thread`。
 
 然后补三处：`channels/__init__.py` 的 `_EXPORTS`、`channel.py` 的 `from_env`、`pyproject.toml` 里加一个 extra 并加进 `all`。
 
@@ -47,7 +47,7 @@ docs: 补飞书应用机器人的权限说明
 
 ## 版本与发布
 
-- 版本号写在 `pyproject.toml` 和 `src/notifykit/__init__.py`，两处必须一致（有测试守着）。
+- 版本号写在 `pyproject.toml` 和 `src/mktagi_notify/__init__.py`，两处必须一致（有测试守着）。
 - 当前处于 `0.0.x`：接口随时可能改，不要在生产里锁死小版本。到 `1.0.0` 才承诺兼容性。
 - 发布由维护者做：改版本号 → 更新 `CHANGELOG.md` → 提交 → `git tag vX.Y.Z && git push --tags`。
 - 打 tag 会触发 `.github/workflows/release.yml` 构建并创建 GitHub Release；Release 发布后再由 `publish.yml` 发到 PyPI（走 Trusted Publishing，需要仓库变量 `PUBLISH_TO_PYPI=true`）。

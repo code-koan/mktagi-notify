@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from notifykit.message import Message
-from notifykit.render.common import clip, to_telegram_html
+from mktagi_notify.message import Message
+from mktagi_notify.render.common import clip, to_telegram_html
 
 LIMIT = 4096
 

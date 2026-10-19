@@ -11,12 +11,12 @@ try:
     from telegram import Bot
 except ImportError as exc:  # pragma: no cover
     raise ImportError(
-        "Telegram 需要 python-telegram-bot：pip install 'notify-kit[telegram]'"
+        "Telegram 需要 python-telegram-bot：pip install 'mktagi-notify[telegram]'"
     ) from exc
 
-from notifykit.message import Message
-from notifykit.render.telegram_html import html
-from notifykit.result import DeliveryResult, elapsed_ms
+from mktagi_notify.message import Message
+from mktagi_notify.render.telegram_html import html
+from mktagi_notify.result import DeliveryResult, elapsed_ms
 
 
 class Telegram:

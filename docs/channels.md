@@ -11,7 +11,7 @@
 
 - 凭据：企业自建应用的 app_id / app_secret，以及目标群的 chat_id。
 - 需要应用开通「以应用身份发消息」权限，并把机器人拉进目标群；否则返回 230002 之类的错误码。
-- 用官方 SDK `lark-oapi`，卡片对象与自定义机器人是同一份（`notifykit.render.feishu_card.card`）。
+- 用官方 SDK `lark-oapi`，卡片对象与自定义机器人是同一份（`mktagi_notify.render.feishu_card.card`）。
 - 未验证：`im/v1/messages` 的 `interactive` 消息里，`content` 直接放卡片对象是官方文档描述的形状，但我们只用假 SDK 测过参数，没有在真实应用上跑过。
 
 ## Telegram `Telegram`
@@ -49,4 +49,4 @@
 | Slack | `slack` | `slack-sdk` |
 | Discord | `discord` | `discord.py` |
 
-没装对应 extra 时，`from notifykit.channels import Telegram` 会抛带安装提示的 `ImportError`，不影响其他通道。
+没装对应 extra 时，`from mktagi_notify.channels import Telegram` 会抛带安装提示的 `ImportError`，不影响其他通道。

@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-import notifykit
+import mktagi_notify
 
 VERSION_LINE = re.compile(r'^version = "([^"]+)"', re.MULTILINE)
 
@@ -13,18 +13,18 @@ def test_version_matches_pyproject():
     match = VERSION_LINE.search(text)
     assert match is not None, "pyproject.toml 里没有 version 行"
     version = match.group(1)
-    assert notifykit.__version__ == version
+    assert mktagi_notify.__version__ == version
     parts = version.split(".")
     assert len(parts) == 3, f"版本号必须是 X.Y.Z：{version}"
     assert all(part.isdigit() for part in parts)
 
 
 def test_py_typed_marker_shipped():
-    assert (ROOT / "src" / "notifykit" / "py.typed").exists()
+    assert (ROOT / "src" / "mktagi_notify" / "py.typed").exists()
 
 
 def test_public_api_is_small():
-    assert sorted(notifykit.__all__) == [
+    assert sorted(mktagi_notify.__all__) == [
         "Channel",
         "ConfigError",
         "DeliveryResult",

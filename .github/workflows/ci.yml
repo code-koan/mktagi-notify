@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv build
-      - run: uv run --isolated --no-project --with dist/*.whl python -c "import notifykit; print(notifykit.__version__)"
+      - run: uv run --isolated --no-project --with dist/*.whl python -c "import mktagi_notify; print(mktagi_notify.__version__)"
       - uses: actions/upload-artifact@v4
         with:
           name: dist

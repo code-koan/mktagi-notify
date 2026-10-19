@@ -1,4 +1,4 @@
-from notifykit import Channel, DeliveryResult, Message, NotifyError, fanout
+from mktagi_notify import Channel, DeliveryResult, Message, NotifyError, fanout
 
 message = Message(title="t", text="x")
 

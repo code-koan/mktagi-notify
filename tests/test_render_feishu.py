@@ -1,5 +1,5 @@
-from notifykit import Message, Severity
-from notifykit.render.feishu_card import card
+from mktagi_notify import Message, Severity
+from mktagi_notify.render.feishu_card import card
 
 
 def test_card_shape():

@@ -8,17 +8,17 @@ from types import SimpleNamespace
 
 import pytest
 
-from notifykit import Message, NotifyError
-from notifykit.render.discord_embed import embed
-from notifykit.render.feishu_card import card
-from notifykit.render.slack_blocks import blocks
-from notifykit.render.telegram_html import html
+from mktagi_notify import Message, NotifyError
+from mktagi_notify.render.discord_embed import embed
+from mktagi_notify.render.feishu_card import card
+from mktagi_notify.render.slack_blocks import blocks
+from mktagi_notify.render.telegram_html import html
 
 message = Message(title="标题", text="正文", fields={"交易所": "binance"}, url="http://h/")
 
 
 async def test_feishu_bot_builds_request(monkeypatch):
-    module = importlib.import_module("notifykit.channels.feishu_bot")
+    module = importlib.import_module("mktagi_notify.channels.feishu_bot")
     captured = {}
 
     class FakeResource:
@@ -41,7 +41,7 @@ async def test_feishu_bot_builds_request(monkeypatch):
 
 
 async def test_feishu_bot_rejection_raises():
-    module = importlib.import_module("notifykit.channels.feishu_bot")
+    module = importlib.import_module("mktagi_notify.channels.feishu_bot")
 
     class FakeResource:
         def create(self, request):
@@ -56,7 +56,7 @@ async def test_feishu_bot_rejection_raises():
 
 
 async def test_telegram_sends_html(monkeypatch):
-    module = importlib.import_module("notifykit.channels.telegram")
+    module = importlib.import_module("mktagi_notify.channels.telegram")
     captured = {}
 
     class FakeBot:
@@ -86,7 +86,7 @@ async def test_telegram_sends_html(monkeypatch):
 
 
 async def test_slack_sends_blocks_and_text(monkeypatch):
-    module = importlib.import_module("notifykit.channels.slack")
+    module = importlib.import_module("mktagi_notify.channels.slack")
     captured = {}
 
     class FakeClient:
@@ -107,7 +107,7 @@ async def test_slack_sends_blocks_and_text(monkeypatch):
 
 
 async def test_slack_rejection_raises(monkeypatch):
-    module = importlib.import_module("notifykit.channels.slack")
+    module = importlib.import_module("mktagi_notify.channels.slack")
 
     class FakeClient:
         def __init__(self, url):
@@ -122,7 +122,7 @@ async def test_slack_rejection_raises(monkeypatch):
 
 
 async def test_discord_sends_embed(monkeypatch):
-    module = importlib.import_module("notifykit.channels.discord")
+    module = importlib.import_module("mktagi_notify.channels.discord")
     captured = {}
 
     class FakeWebhook:

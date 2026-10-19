@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from notifykit.message import Message, Severity
+from mktagi_notify.message import Message, Severity
 
 _TEMPLATES = {
     Severity.INFO: "blue",

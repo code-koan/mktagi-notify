@@ -2,7 +2,7 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from notifykit import Message, Severity
+from mktagi_notify import Message, Severity
 
 
 def test_defaults():

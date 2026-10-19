@@ -5,10 +5,10 @@
 
 from __future__ import annotations
 
-from notifykit.channel import Channel, channel_names, fanout, from_env
-from notifykit.errors import ConfigError, NotifyError
-from notifykit.message import Message, Severity
-from notifykit.result import DeliveryResult
+from mktagi_notify.channel import Channel, channel_names, fanout, from_env
+from mktagi_notify.errors import ConfigError, NotifyError
+from mktagi_notify.message import Message, Severity
+from mktagi_notify.result import DeliveryResult
 
 __version__ = "0.0.1"
 

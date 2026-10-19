@@ -1,4 +1,4 @@
-from notifykit import channel_names, from_env
+from mktagi_notify import channel_names, from_env
 
 VARS = {
     "FEISHU_WEBHOOK_URL": "https://open.feishu.cn/open-apis/bot/v2/hook/x",
@@ -16,7 +16,7 @@ VARS = {
 
 def _clear(monkeypatch):
     for key in VARS:
-        monkeypatch.delenv(f"NOTIFYKIT_{key}", raising=False)
+        monkeypatch.delenv(f"MKTAGI_NOTIFY_{key}", raising=False)
 
 
 def test_no_env_means_no_channels(monkeypatch):
@@ -26,21 +26,21 @@ def test_no_env_means_no_channels(monkeypatch):
 
 def test_only_configured_channels_are_built(monkeypatch):
     _clear(monkeypatch)
-    monkeypatch.setenv("NOTIFYKIT_FEISHU_WEBHOOK_URL", VARS["FEISHU_WEBHOOK_URL"])
+    monkeypatch.setenv("MKTAGI_NOTIFY_FEISHU_WEBHOOK_URL", VARS["FEISHU_WEBHOOK_URL"])
     assert channel_names(from_env()) == ["feishu-webhook"]
 
 
 def test_incomplete_credentials_are_skipped(monkeypatch):
     _clear(monkeypatch)
-    monkeypatch.setenv("NOTIFYKIT_TELEGRAM_BOT_TOKEN", "123:abc")
-    monkeypatch.setenv("NOTIFYKIT_FEISHU_APP_ID", "cli_x")
+    monkeypatch.setenv("MKTAGI_NOTIFY_TELEGRAM_BOT_TOKEN", "123:abc")
+    monkeypatch.setenv("MKTAGI_NOTIFY_FEISHU_APP_ID", "cli_x")
     assert from_env() == []
 
 
 def test_all_channels(monkeypatch):
     _clear(monkeypatch)
     for key, value in VARS.items():
-        monkeypatch.setenv(f"NOTIFYKIT_{key}", value)
+        monkeypatch.setenv(f"MKTAGI_NOTIFY_{key}", value)
     assert channel_names(from_env()) == [
         "feishu-webhook",
         "feishu-bot",

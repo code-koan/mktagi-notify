@@ -1,5 +1,5 @@
-from notifykit import Message, Severity
-from notifykit.render.discord_embed import COLORS, embed
+from mktagi_notify import Message, Severity
+from mktagi_notify.render.discord_embed import COLORS, embed
 
 
 def test_embed_shape():
