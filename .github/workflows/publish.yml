@@ -1,7 +1,7 @@
 name: Publish to PyPI
 
-# 默认不发布。要发的时候把仓库变量 PUBLISH_TO_PYPI 设成 true，
-# 并在 PyPI 上配置本仓库的 Trusted Publisher（workflow: publish.yml, environment: pypi）。
+# 发布 GitHub Release 就自动发到 PyPI。仓库 secret 需要 PYPI_API_TOKEN。
+# 同一个版本号只能发一次，重复发布会失败——改版本号再发。
 on:
   release:
     types: [published]
@@ -9,15 +9,15 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   publish:
-    if: vars.PUBLISH_TO_PYPI == 'true'
     runs-on: ubuntu-latest
-    environment: pypi
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv build
-      - uses: pypa/gh-action-pypi-publish@release/v1
+      - name: 上传到 PyPI
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: uv publish dist/*
